@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({count}) => {
   return (
     <>
       <div className="nav">
@@ -28,7 +28,7 @@ const Navbar = () => {
             src="https://cdn-icons-png.flaticon.com/128/2203/2203239.png" 
             className="cartIcon" 
         />
-        <span className="cartCount">0</span>
+        <span className="cartCount">{count}</span>
       </div>
     </>
   );
