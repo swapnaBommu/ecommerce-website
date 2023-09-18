@@ -10,6 +10,7 @@ export default function Home(props){
                 increaseQty = {props.increaseQty}
                 decreaseQty = {props.decreaseQty}
                 cartcount = {props.cartCount}
+                delete = {props.delete}
             />
         
         </div>

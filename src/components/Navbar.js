@@ -1,8 +1,9 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import './Navbar.css';
 
-const Navbar = ({count}) => {
+const Navbar = ({count,products}) => {
   return (
     <>
       <div className="nav">
@@ -14,10 +15,16 @@ const Navbar = ({count}) => {
               className='icon'
           />
         </Link>
-        <Link to="/add">
+        <Link to="/appliences">
           <img src="https://cdn-icons-png.flaticon.com/128/9604/9604309.png"
              alt="add"
              className='icon'
+             data-tooltip-id="my-tooltip-3" 
+          />
+          <ReactTooltip
+            id="my-tooltip-3"
+            place="bottom"
+            content="add product to list"
           />
         </Link> 
       </div>
