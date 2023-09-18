@@ -50,12 +50,7 @@ export default function Product(props){
                                 alt="delete"
                             />
                         </span>
-                        <span>
-                            <img 
-                                src="https://cdn-icons-png.flaticon.com/128/1160/1160758.png"
-                                alt="edit"
-                            />
-                        </span>
+                        
                     </div>
                 </div>
                 </div>     

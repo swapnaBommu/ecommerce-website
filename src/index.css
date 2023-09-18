@@ -38,8 +38,8 @@ code {
 .right-section{
     width: 80%;
     height: 170px;
-    position: relative;
-    top: -185px;
+    position: absolute;
+    top: 0px;
     left: 240px;
     text-align: left;
 }

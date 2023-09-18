@@ -22,29 +22,37 @@ function App() {
 
   useEffect(() => { 
     fetchData();
-  },[]);
+  },{products});
  
   //post data 
-  const PostData = async (e) => {
-    e.preventDefault();
-    const response = await fetch('http://localhost:3000/appliences', {
+  const PostData =async (value) => {
+   console.log('post data', value)
+    const response = await fetch('https://my-json-server.typicode.com/swapnaBommu/RestAPIcreation/appliances', {
       method: 'POST',
-      body: 
-        {
-          "id":20,
-          "title":e.title,
-          "price":e.price,
-          "qty":0,
-          "img": e.image
-        },
-      
+      body: JSON.stringify(value),
       headers: {
         'Content-Type': 'application/json'
       }
     });
     const result = await response.json();
-    console.log('',result);
+    setProducts([result,...products]);
+
   }
+ 
+  function deleteData(removeData){
+    fetch(`https://my-json-server.typicode.com/swapnaBommu/RestAPIcreation/appliances/${removeData.id}`, {
+      method: 'DELETE',
+      headers: {
+          'Content-Type':'application/json'
+      },
+      body: JSON.stringify(removeData)
+      })
+      products.splice(products.indexOf(removeData),1);
+      
+      setProducts([...products]);
+     
+    }
+
 
 
   const handleCartCount = (id) =>{
@@ -62,18 +70,7 @@ const decreaseCartCount = (id) =>{
   }
   
 }
-//function to delete product
-const handleDelete = (product) =>{
 
- let data = products.splice(products.indexOf(product),1);
- setProducts(data);
- fetchData();
-
-
-  console.log('delete',products)
-  addToast('product deleted',{appearance:'success'});
- 
-}
 
     return (
       <div className="App">
@@ -84,7 +81,7 @@ const handleDelete = (product) =>{
                             cartCount={cartCount} 
                             increaseQty = {handleCartCount}
                             decreaseQty = {decreaseCartCount}
-                            delete = {handleDelete}
+                            delete = {deleteData}
                             />}
         ></Route>
         <Route exact path='/appliences' element={<AddProduct post={PostData}/>}></Route>      
